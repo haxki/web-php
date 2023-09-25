@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Мой сайт</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/calendar.css">
+		<script src="js/jquery-3.6.2.js"></script>
+	</head>
+	<body>
+		<header>Мой сайт</header>
+		<main>
+			<nav><ul>
+				<li><a href="main.html">Главная</a></li>
+				<li><a href="about.html">Обо мне</a></li>	
+				<li><a href="hobbies.html">Мои интересы</a></li>
+				<li><a href="learning.html">Учеба</a></li>
+				<li><a href="photos.html">Фотоальбом</a></li>
+				<li><a href="contact.html">Контакт</a></li>
+				<li><a href="test.html">Тест по дискретной математике</a></li>
+				<li><a href="history.html">История просмотра</a></li>
+			</ul></nav>
+			<div class="content">
+				<section id="inner_header"><h3>Контакт</h3></section>
+				<img class="background" src="img/contact.jpg" height="849" alt="">
+				<form class="form" name="validable" method="POST" action="mailto:gleb13x@mail.ru" >
+					<h3 style="text-align: center;">Отправьте мне сообщение если хотите</h3>
+					<label for="answer1"><b><br>Ваше ФИО:<br></b></label>
+					<input id="answer1" name="answer1" type="text" placeholder="Введите ваше ФИО...">
+					
+					<label for="phone"><b><br>Ваш телефон:<br></b></label>
+					<input id="phone" name="phone" type="text" placeholder="Введите ваш телефон...">
+					
+					<label for="answerDate"><b><br>Дата вашего рождения:</b><br></label>
+					<input id="answerDate" type="text" name="answerDate" value="Выберите дату в таблице..." readonly>
+					
+					<label for="answer2"><b><br>Ваш пол:<br></b></label>
+					<fieldset id="answer2" name="answer2" style="border: none;">
+						<input type="radio" value="Мужчина" name="answer2" id="answer21">
+						<label for="answer21">Мужчина</label>
+						<input type="radio" value="Женщина" name="answer2" id="answer22">
+						<label for="answer22">Женщина</label>
+					</fieldset>
+
+					<label for="answer3"><br><b>Ваш возраст:</b><br></label>
+					<select id="answer3" name="answer3">
+						<option>До 14</option>
+						<option>От 15 до 24</option>
+						<option>От 25 до 34</option>
+						<option>От 35 до 44</option>
+						<option>От 45 до 54</option>
+						<option>От 55</option>
+					</select>
+					
+					<label for="answer4"><b><br>Ваш e-mail:<br></b></label>
+					<input id="answer4" name="answer4" type="email" placeholder="Введите ваш e-mail...">
+					
+					<label for="answer5"><b><br>Сообщение:<br></b></label>
+					<textarea id="answer5" name="answer5" placeholder="Введите ваше сообщение..."></textarea>
+					
+					<div class="form_buttons">
+						<input type="submit">
+						<input type="reset" value="Очистить форму">
+					</div>
+				</form>
+			</div>
+		</main>
+		<script src="js/history.js"></script>
+		<script src="js/calendar.js"></script>
+		<script src="js/form_handler.js"></script>
+		<script src="js/menu_items_handler.js"></script>
+		<script src="js/time.js"></script>
+	</body>
+</html>

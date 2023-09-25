@@ -1,0 +1,317 @@
+@use 'sass:color';
+@use 'sass:math';
+$blue: #90e2ff;
+$yellow: #fffedf;
+
+// установка заднего фона
+@each $sel, $color in (
+	'nav ul li a': $blue,
+	'#inner_header': lighten($blue, 5%),
+	'html, nav ul li a.sublist': lighten($blue, 10%),
+	'header, .clock': darken($blue, 5%),
+	//'': darken($blue, 10%),
+	'.content, .popover': $yellow,
+	'.on-page-li, .disclaimer>div': url(../img/mike.jpg),
+	) 
+{
+	#{$sel}{ background: $color; }
+}
+
+@mixin centrify-flex($disp:flex, $justify:center, $align:center, $dir:null, $wrap:null) {
+	display: $disp;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $dir;
+	flex-wrap: $wrap;
+}
+
+@mixin elem-size-hw($h:null, $w:null, $min:null, $max:null) {
+	$pre-h: ''; 
+	$pre-w: ''; 
+	
+	@if $min=='h'{ $pre-h: 'min-'; }
+	@else if $min=='w'{ $pre-w: 'min-'; }
+	@else if $min=='all' { $pre-h: 'min-'; $pre-w: 'min-'; }
+	
+	@if $max=='h'{ $pre-h: 'max-'; }
+	@else if $max=='w'{ $pre-w: 'max-'; }
+	@else if $max=='all' { $pre-h: 'max-'; $pre-w: 'max-'; }
+	
+	#{$pre-h}height: $h;
+	#{$pre-w}width: $w;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	@include elem-size-hw($w:100%);
+	font-family: "Sitka Small";
+	font-weight: bold;
+	color: #000041;
+}
+%no_select {
+	user-select: none;
+	-webkit-user-select: none;
+}
+%thin_font {
+	font-weight: 200;
+}
+header {
+	@extend %no_select;
+	@include elem-size-hw(60px);
+	text-align: left;
+	text-indent: 65px;
+	font-size: 50px;
+}
+main {
+	@include elem-size-hw(909px, $min:'h');
+}
+.content{
+	@include elem-size-hw(909px, 80%, 'h');
+	display: block;
+	float: right;
+}
+#inner_header {
+	@extend %no_select;
+	@include centrify-flex();
+	@include elem-size-hw(60px, 100%, $max:'w');
+	font-size: 30px;
+}
+nav {
+	@include elem-size-hw($w:20%);
+	display: block;
+	float: left;
+	ul {
+		position: relative;
+		list-style-type: none;
+		li a {
+			@include centrify-flex();
+			@include elem-size-hw(34px);
+			text-decoration: none;
+			text-align: center;
+			font-size: 20px;
+			color: #000041;
+			&.sublist {
+				@extend %thin_font;
+			}
+		}
+	}
+}
+#inner_content{
+	@include centrify-flex($justify:null, $dir:row, $wrap:nowrap);
+}
+%main_page {
+	@include elem-size-hw($w:50%, $max:'w');
+	flex-grow: 1;
+	padding: 50px;
+};
+.photo {
+	@extend %main_page;
+	img {
+		@include elem-size-hw($w:90%);
+		margin: 0 5%;
+		border-radius: 100px;
+		box-shadow: 0 0 10px #666;
+	}
+}
+.description {
+	@extend %main_page;
+	h1{
+		@extend %thin_font;
+		font-size: 36px;
+	}
+	p{
+		@extend %thin_font;
+		margin-top: 10px;
+		font-size: 25px;
+	}
+}
+@for $p from 1 through 9 {
+	.autobiography p:nth-child(#{$p}){
+		padding: 0 #{50px * $p};
+		color: ##{ $p*11*100 + (10-$p)*11 + 'ff'};
+		text-shadow: 0 0 #{$p*3px} ##{$p*11*100 - $p*10 + 'ff'};
+	}
+}
+.autobiography p{
+	@extend %thin_font;
+	margin: 60px;
+	text-align: center;
+	&::after, &::before { 
+		content: " - - - "; 
+	}
+}
+.gallery {
+	@include centrify-flex(grid, $align:null);
+	grid-template-columns: repeat(6, 200px);
+	grid-template-rows: repeat(3, 200px);
+	grid-gap: 30px;
+	align-self: center;
+	padding: 15px;
+	box-sizing: border-box;
+	div {
+		margin: auto;
+		@include elem-size-hw($w:min-content);
+		img{
+			@include elem-size-hw(150px, 200px, $max:'all');
+			border: ridge;
+			box-shadow: 0 0 10px #666;
+		}
+		p{
+			text-align: center;
+			font-weight: 200;
+		}
+	}
+}
+.background{
+	@include elem-size-hw($w:80%);
+	position: absolute; 
+	opacity: 10%; 
+	pointer-events: none;
+}
+.hobbies { 
+	div {
+		@include elem-size-hw(300px);
+		margin: 50px;
+		img {
+			@include elem-size-hw($w:20%);
+			margin: 0 50px;
+			float: left;
+		}
+		h1 {
+			text-align: center;
+		}
+		p {
+			margin-top: 10px;
+			text-align: center;
+			white-space: pre-line;
+		}
+		&:nth-child(2n+1) img {
+			float: right;
+		}
+	}
+}
+.form { 
+	@include centrify-flex($align:null, $dir:column);
+	@include elem-size-hw(500px, 50%, 'h');
+	margin: 100px 25%;
+	padding: 0 100px;
+	border: 10px solid blue;
+	border-radius: 50px;
+	box-shadow: 0 0 30px blue;
+}
+.form_buttons {
+	@include centrify-flex($justify:space-between, $align:null);
+	@include elem-size-hw($w:50%);
+	margin: 10px 0 10px 50%;
+	input {
+		@include elem-size-hw(2em, 45%);
+	}
+}
+.img-window {
+	@include elem-size-hw(75%);
+	position: fixed;
+	top: 12.5%;
+	background: black;
+	box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+	border: ridge;
+	img {
+		@include elem-size-hw(100%);
+	}
+}	
+.empty {
+	display: block;
+	background: none;
+}
+%page-li {
+	@include elem-size-hw($w:110%);
+	color: white;
+}
+.this-page-li {
+	@extend %page-li;
+	justify-content: right;
+	background: #00b4f5;
+	padding-right: 10px;
+}
+.on-page-li {
+	@extend %page-li;
+	background-size: 100%;
+	background-position: 0 20%;
+	background-repeat: space;
+	text-indent: 10px;
+	justify-content: left;
+}
+.clock {
+	@include centrify-flex($dir:column);
+	@include elem-size-hw(200px, 100%);
+}
+.err-msg {
+	font-weight: 200;
+	color: red;
+	font-size: 14px;
+	text-indent: 20px;
+}
+.fingers {
+	@extend %no_select;
+	@include centrify-flex($justify:space-around);
+	
+	background: #e3e3e3;
+	border: ridge;
+	border-radius: 200px;
+	font-size: 30px;
+	font-weight: 100;
+	div:first-of-type, div:last-of-type {
+		@include elem-size-hw($w:20%);
+		text-align: center;
+	}
+
+}
+.popover {
+	@include elem-size-hw($w:400px);
+	position: absolute;
+	border: ridge;
+}
+.disclaimer {
+	@include elem-size-hw(100%, 100%);
+	position: fixed;
+	background: rgba(0,0,0,.2);
+	backdrop-filter: blur(10px);
+	left: 0;
+	top: 0;
+	> div {
+		@extend %no_select;
+		@include elem-size-hw(50%, 50%);
+		position: relative;
+		left: 25%;
+		top: 25%;
+		padding: 50px;
+		background-size: cover; 
+		color: #fee; 
+		border: 10px solid grey;
+		> p {
+			@include elem-size-hw($w:40%);
+			font-size: 25px;
+		}
+		> div {
+			@include centrify-flex($dir:row, $justify:flex-start, $align:flex-end);
+			@include elem-size-hw(180px, 100%);
+			a {
+				@include centrify-flex();
+				@include elem-size-hw(40px, 150px);
+				background: red;
+				text-decoration: none;
+				border-radius: 10px;
+				color: #fee;
+				font-size: 20px;
+				margin-right: 100px;
+				&:hover {
+					background: #c00;
+					box-shadow: 0 0 10px white; 
+				}
+			}
+		}
+	}
+}

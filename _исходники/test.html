@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Мой сайт</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style> label[for*="answer"] { font-weight: 100; } </style>
+		<script src="js/jquery-3.6.2.js"></script>
+	</head>
+	<body>
+		<header>Мой сайт</header>
+		<main>
+			<nav><ul>
+				<li><a href="main.html">Главная</a></li>
+				<li><a href="about.html">Обо мне</a></li>	
+				<li><a href="hobbies.html">Мои интересы</a></li>
+				<li><a href="learning.html">Учеба</a></li>
+				<li><a href="photos.html">Фотоальбом</a></li>
+				<li><a href="contact.html">Контакт</a></li>
+				<li><a href="test.html">Тест по дискретной математике</a></li>
+				<li><a href="history.html">История просмотра</a></li>
+			</ul></nav>
+			<div class="content">
+				<section id="inner_header"><h3>Тест по дискретной математике</h3></section>
+				<img class="background" src="img/exam.jpg" height="849" alt="">
+				<form class="form" method="POST" action="mailto:gleb13x@mail.ru" >
+					<label for="answer01"><b><br>Ваше ФИО:</b></label>
+					<input id="answer01" name="answer01" type="text" placeholder="Введите ваше ФИО...">
+					<label for="answer02"><b><br>Ваша группа:</b></label>
+					<select id="answer02" name="answer02">
+						<optgroup label="1 курс">
+							<option value="ИС/б-22-1-о">ИС/б-22-1-о</option>
+							<option value="ИС/б-22-2-о">ИС/б-22-2-о</option>
+							<option value="ИС/б-22-3-о">ИС/б-22-3-о</option>
+							<option value="ПИ/б-22-1-о">ПИ/б-22-1-о</option>	
+						</optgroup>
+						<optgroup label="2 курс">
+							<option value="ИС/б-21-1-о">ИС/б-21-1-о</option>
+							<option value="ИС/б-21-2-о">ИС/б-21-2-о</option>
+							<option value="ИС/б-21-3-о">ИС/б-21-3-о</option>
+							<option value="ПИ/б-21-1-о">ПИ/б-21-1-о</option>	
+						</optgroup>
+						<optgroup label="3 курс">
+							<option value="ИС/б-20-1-о">ИС/б-20-1-о</option>
+							<option value="ИС/б-20-2-о">ИС/б-20-2-о</option>
+							<option value="ПИ/б-20-1-о">ПИ/б-20-1-о</option>	
+						</optgroup>
+						<optgroup label="4 курс">
+							<option value="ИС/б-19-1-о">ИС/б-19-1-о</option>
+							<option value="ПИ/б-19-1-о">ПИ/б-19-1-о</option>	
+						</optgroup>
+					</select>
+
+					<label for="answer1"><b><br>Множество – это...</b></label>
+					<fieldset id="answer1" style="border: none;">
+						<input type="radio" value="набор каких-либо элементов" name="answer1" id="answer11">
+						<label for="answer11">набор каких-либо элементов</label><br>
+						<input type="radio" value="перечень одинаковых элементов" name="answer1" id="answer12">
+						<label for="answer12">перечень одинаковых элементов</label><br>
+						<input type="radio" value="совокупность элементов, обладающих некоторым признаком, свойством" name="answer1" id="answer13">
+						<label for="answer13">совокупность элементов, обладающих некоторым признаком, свойством</label><br>
+						<input type="radio" value="совокупность чисел" name="answer1" id="answer14">
+						<label for="answer14">совокупность чисел</label><br>
+					</fieldset>
+
+					<label for="answer2"><b><br>Что из этого относится к дискретной математике?</b></label>
+					<select id="answer2" name="answer2">
+						<option>Дефрагментация</option>
+						<option>Интеграл</option>
+						<option>Оксюморон</option>
+						<option>Импликация</option>
+						<option>Фотосинтез</option>
+					</select>
+
+					<label for="answer3"><b><br>Что это за операция?<br>&and;<br></b></label>
+					<textarea id="answer3" name="answer3" placeholder="Введите ваш ответ..."></textarea>
+
+					<div class="form_buttons">
+						<input type="submit">
+						<input type="reset" value="Очистить форму">
+					</div>
+				</form>
+			</div>
+		</main>
+		<script src="js/history.js"></script>
+		<script src="js/form_handler_test.js"></script>
+		<script src="js/menu_items_handler.js"></script>
+		<script src="js/time.js"></script>
+	</body>
+</html>
